@@ -262,7 +262,7 @@ window.TIENDA = {
  ],
  "pagoInfo": "",
  "resenas": [],
- "analytics": "",
+ "analytics": "G-6S6TPHYRXK",
  "legal": {
   "razon": "",
   "cuit": "",
