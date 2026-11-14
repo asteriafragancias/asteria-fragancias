@@ -41,6 +41,8 @@ ol{color:var(--muted);font-size:.92rem;padding-left:20px}
     <input type="text" id="wa" inputmode="numeric" placeholder="Ej: 5492611234567">
     <label for="ig">Instagram (usuario, sin @)</label>
     <input type="text" id="ig" placeholder="Ej: asteria.fragancias">
+    <label for="surl">Dirección pública de la tienda (con / al final)</label>
+    <input type="text" id="surl" placeholder="https://tu-usuario.github.io/asteria-fragancias/">
     <label for="ga">Código de Google Analytics (opcional, empieza con G-)</label>
     <input type="text" id="ga" placeholder="Ej: G-ABC123XYZ">
   </div>
@@ -59,12 +61,46 @@ ol{color:var(--muted);font-size:.92rem;padding-left:20px}
     <textarea id="res" rows="4" placeholder="María | Me encantó, llegó rapidísimo."></textarea>
   </div>
 
+  <h2>Entrega</h2>
+  <div class="box">
+    <label for="pts">Puntos de encuentro (uno por línea)</label><textarea id="pts" rows="3"></textarea>
+    <label for="ptinfo">Aviso para los puntos de encuentro</label><input type="text" id="ptinfo">
+    <label class="chk"><input type="checkbox" id="domA"> Ofrecer envío a domicilio</label>
+    <label for="domT">Texto del envío a domicilio</label><input type="text" id="domT">
+  </div>
+  <h2>Preguntas, galería y registro de pedidos</h2>
+  <div class="box">
+    <label for="faq">Preguntas frecuentes (una por línea, con el formato: Pregunta | Respuesta)</label><textarea id="faq" rows="6"></textarea>
+    <label for="gal">Galería de clientes (nombres de archivo, uno por línea)</label><textarea id="gal" rows="3"></textarea>
+    <label for="galf">Agregar foto a la galería (se sube directo, requiere token)</label><input type="file" id="galf" accept="image/*"><p class="nota" id="gals" role="status"></p>
+    <label for="ped">Dirección del registro de pedidos (Google Apps Script)</label><input type="text" id="ped" placeholder="https://script.google.com/macros/s/.../exec">
+  </div>
+
+  <h2>Datos del vendedor y devoluciones</h2>
+  <div class="box">
+    <label for="lg-razon">Nombre o razón social</label><input type="text" id="lg-razon">
+    <div class="g2"><div><label for="lg-cuit">CUIT</label><input type="text" id="lg-cuit"></div><div><label for="lg-email">Email de contacto</label><input type="text" id="lg-email"></div></div>
+    <label for="lg-dom">Domicilio</label><input type="text" id="lg-dom">
+    <label for="lg-pol">Política de cambios y devoluciones</label><textarea id="lg-pol" rows="4"></textarea>
+    <p class="nota">Estos datos aparecen en la tienda solo si los completás. Consultá con tu contador qué información corresponde mostrar.</p>
+  </div>
+
   <h2>Productos</h2>
   <div id="lista"></div>
   <button class="sec" id="nuevo" type="button">+ Agregar producto</button>
   <p class="nota">La foto de cada producto se sube junto a los demás archivos, con el nombre foto-NÚMERO.jpg. Por ejemplo, foto-10.jpg.</p>
 
-  <button id="bajar" type="button" style="margin-top:16px">Descargar datos.js</button>
+  <div class="box" style="margin-top:16px">
+    <h2 style="margin-top:0">Publicar directo en GitHub</h2>
+    <p class="nota" style="margin-top:0">Opcional. Con un token de GitHub, los cambios y las fotos se publican sin descargar nada. Seguí los pasos del README.</p>
+    <label for="repo">Repositorio</label><input type="text" id="repo" value="luceromelina35-sys/asteria-fragancias">
+    <label for="tok">Token de GitHub</label><input type="password" id="tok" autocomplete="off">
+    <label class="chk"><input type="checkbox" id="rec"> Recordar en este navegador</label>
+    <button id="pub" type="button" style="margin-top:12px">Publicar cambios en la tienda</button>
+    <button class="sec" id="pags" type="button">Actualizar páginas para compartir</button>
+    <p class="nota" id="est" role="status"></p>
+  </div>
+  <button class="sec" id="bajar" type="button">Descargar datos.js (alternativa manual)</button>
   <div class="box" style="margin-top:16px"><ol>
     <li>Tocá "Descargar datos.js".</li>
     <li>Subí ese archivo a GitHub reemplazando el anterior.</li>
@@ -74,6 +110,7 @@ ol{color:var(--muted);font-size:.92rem;padding-left:20px}
 <script src="datos.js"></script>
 <script>
 var D = window.TIENDA;
+var nuevos = [];
 var $ = function(id){return document.getElementById(id)};
 function esc(t){return String(t==null?"":t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 var SEL = {
@@ -86,7 +123,7 @@ var CAMPOS = [
   ["nombre","Nombre","text"],["marca","Marca","text"],["tipo","Tipo (ej: Eau de parfum)","text"],["ml","Contenido (ml)","number"],
   ["precioTarjeta","Precio de lista, 3 cuotas sin interés ($)","number"],["precio","Precio con descuento por transferencia o efectivo ($)","number"],["genero","Para","sel"],["estilo","Estilo (para el test de aroma)","sel"],["momento","Momento de uso","sel"],
   ["etiqueta","Etiqueta","sel"],["familia","Familia olfativa","text"],["salida","Notas de salida","text"],["corazon","Notas de corazón","text"],
-  ["fondo","Notas de fondo","text"],["perfil","Descripción","ta"]
+  ["fondo","Notas de fondo","text"],["usos","Ideal para (separado por comas)","text"],["stock","Stock (unidades, vacío = sin control)","number"],["perfil","Descripción","ta"]
 ];
 $("wa").value = D.whatsapp || "";
 $("ig").value = D.instagram || "";
@@ -95,10 +132,15 @@ $("pagos").value = (D.pagos || []).join("\n");
 $("pinfo").value = D.pagoInfo || "";
 $("nos").value = D.nosotros || "";
 $("env").value = (D.envios || []).join("\n");
+$("surl").value = D.url || ""; $("pts").value = (D.puntos || []).join("\n"); $("ptinfo").value = D.puntosInfo || "";
+var DM = D.domicilio || {}; $("domA").checked = !!DM.activo; $("domT").value = DM.texto || "";
+$("faq").value = (D.faq || []).map(function(x){return x.p + " | " + x.r}).join("\n"); $("gal").value = (D.galeria || []).join("\n"); $("ped").value = D.pedidosUrl || "";
+var LG = D.legal || {};
+$("lg-razon").value = LG.razon || ""; $("lg-cuit").value = LG.cuit || ""; $("lg-email").value = LG.email || ""; $("lg-dom").value = LG.domicilio || ""; $("lg-pol").value = LG.politica || "";
 $("res").value = (D.resenas || []).map(function(r){return r.nombre + " | " + r.texto}).join("\n");
 
 function campo(p,i,c){
-  var k=c[0], v=p[k]==null?"":p[k], id="c"+i+"_"+k, h='<label for="'+id+'">'+c[1]+'</label>';
+  var k=c[0], v=p[k]==null?"":(Array.isArray(p[k])?p[k].join(", "):p[k]), id="c"+i+"_"+k, h='<label for="'+id+'">'+c[1]+'</label>';
   if(c[2]==="sel") return h+'<select id="'+id+'" data-i="'+i+'" data-k="'+k+'">'+SEL[k].map(function(o){return '<option value="'+o[0]+'"'+(o[0]===v?" selected":"")+'>'+o[1]+'</option>'}).join("")+'</select>';
   if(c[2]==="ta") return h+'<textarea id="'+id+'" rows="3" data-i="'+i+'" data-k="'+k+'">'+esc(v)+'</textarea>';
   return h+'<input type="'+c[2]+'" id="'+id+'" data-i="'+i+'" data-k="'+k+'" value="'+esc(v)+'"'+(c[2]==="number"?' min="0"':"")+'>';
@@ -110,6 +152,7 @@ function lista(){
       CAMPOS.filter(function(c){return c[2]==="ta"}).map(function(c){return campo(p,i,c)}).join("")+
       '<label class="chk"><input type="checkbox" data-i="'+i+'" data-k="agotado"'+(p.agotado?" checked":"")+'> Agotado</label>'+
       '<label class="chk"><input type="checkbox" data-i="'+i+'" data-k="destacado"'+(p.destacado?" checked":"")+'> Destacado en la portada</label>'+
+      '<label for="fo'+i+'">Foto del producto (se publica directo, requiere token)</label><input type="file" id="fo'+i+'" accept="image/*" data-foto="'+i+'"><p class="nota" id="fs'+i+'" role="status"></p>'+
       '<button class="del" type="button" data-del="'+i+'">Eliminar producto</button></details>';
   }).join("");
 }
@@ -117,8 +160,8 @@ $("lista").addEventListener("input", function(e){
   var t=e.target; if(t.dataset.i==null) return;
   var p=D.productos[+t.dataset.i], k=t.dataset.k;
   if(t.type==="checkbox") p[k]=t.checked;
-  else if(t.type==="number"){var n=parseInt(t.value,10); p[k]=n>0?n:(k==="precio"||k==="precioTarjeta"?null:p[k])}
-  else p[k]=t.value;
+  else if(t.type==="number"){var n=parseInt(t.value,10); if(k==="stock") p[k]=(isNaN(n)||n<0)?null:n; else p[k]=n>0?n:(k==="precio"||k==="precioTarjeta"?null:p[k])}
+  else p[k]=(k==="usos"?t.value.split(",").map(function(x){return x.trim()}).filter(Boolean):t.value);
 });
 $("lista").addEventListener("click", function(e){
   var b=e.target.closest("[data-del]"); if(!b) return;
@@ -127,23 +170,85 @@ $("lista").addEventListener("click", function(e){
 });
 $("nuevo").onclick=function(){
   var id=D.productos.reduce(function(m,p){return Math.max(m,p.id)},0)+1;
-  D.productos.push({id:id,nombre:"Nuevo perfume",marca:"",tipo:"Eau de parfum",ml:100,genero:"unisex",estilo:"fresco",momento:"ambos",etiqueta:"novedad",precio:null,precioTarjeta:null,agotado:false,destacado:false,familia:"",salida:"",corazon:"",fondo:"",perfil:"",color:"#c9a063"});
+  nuevos.push(id);D.productos.push({id:id,nombre:"Nuevo perfume",marca:"",tipo:"Eau de parfum",ml:100,genero:"unisex",estilo:"fresco",momento:"ambos",etiqueta:"novedad",precio:null,precioTarjeta:null,stock:null,agotado:false,destacado:false,familia:"",salida:"",corazon:"",fondo:"",perfil:"",usos:[],color:"#c9a063"});
   lista();
   var d=$("lista").lastElementChild; d.open=true; d.scrollIntoView({behavior:"smooth"});
 };
 function lineas(id){return $(id).value.split("\n").map(function(x){return x.trim()}).filter(Boolean)}
-$("bajar").onclick=function(){
+function armar(){
   D.whatsapp=$("wa").value.replace(/\D/g,"");
   D.instagram=$("ig").value.trim().replace(/^@/,"");
   D.analytics=$("ga").value.trim();
   D.pagos=lineas("pagos"); D.pagoInfo=$("pinfo").value.trim();
   D.nosotros=$("nos").value.trim(); D.envios=lineas("env");
   D.resenas=lineas("res").map(function(l){var i=l.indexOf("|");return i<0?{nombre:"Cliente",texto:l}:{nombre:l.slice(0,i).trim()||"Cliente",texto:l.slice(i+1).trim()}}).filter(function(r){return r.texto});
-  var txt="// Archivo de datos de la tienda. Se edita desde admin.html\nwindow.TIENDA = "+JSON.stringify(D,null,1)+";\n";
+  D.url=$("surl").value.trim(); if(D.url&&D.url.slice(-1)!=="/") D.url+="/";
+  D.puntos=lineas("pts"); D.puntosInfo=$("ptinfo").value.trim(); D.domicilio={activo:$("domA").checked,texto:$("domT").value.trim()};
+  D.faq=lineas("faq").map(function(l){var i=l.indexOf("|");return i<0?null:{p:l.slice(0,i).trim(),r:l.slice(i+1).trim()}}).filter(function(x){return x&&x.p&&x.r});
+  D.galeria=lineas("gal"); D.pedidosUrl=$("ped").value.trim();
+  D.legal={razon:$("lg-razon").value.trim(),cuit:$("lg-cuit").value.trim(),email:$("lg-email").value.trim(),domicilio:$("lg-dom").value.trim(),politica:$("lg-pol").value.trim()};
+  return "// Archivo de datos de la tienda. Se edita desde admin.html\nwindow.TIENDA = "+JSON.stringify(D,null,1)+";\n";
+}
+$("bajar").onclick=function(){
   var a=document.createElement("a");
-  a.href=URL.createObjectURL(new Blob([txt],{type:"text/javascript"}));
+  a.href=URL.createObjectURL(new Blob([armar()],{type:"text/javascript"}));
   a.download="datos.js"; document.body.appendChild(a); a.click(); a.remove();
 };
+// Publicación directa en GitHub (opcional)
+function estado(t){$("est").textContent=t}
+function b64(txt){return btoa(unescape(encodeURIComponent(txt)))}
+function api(path,opt){
+  var r=$("repo").value.trim(), t=$("tok").value.trim();
+  if(!r||!t) return Promise.reject(new Error("Falta el repositorio o el token."));
+  opt=opt||{}; opt.headers=Object.assign({"Authorization":"Bearer "+t,"Accept":"application/vnd.github+json"},opt.headers||{});
+  return fetch("https://api.github.com/repos/"+r+"/contents/"+path,opt);
+}
+function errMsg(r){return r.json().then(function(j){throw new Error(j.message||("Error "+r.status))},function(){throw new Error("Error "+r.status)})}
+function subir(path,contenido,msg){
+  return api(path).then(function(r){
+    if(r.status===200) return r.json().then(function(j){return j.sha});
+    if(r.status===404) return null;
+    return errMsg(r);
+  }).then(function(sha){
+    var body={message:msg,content:contenido}; if(sha) body.sha=sha;
+    return api(path,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+  }).then(function(r){if(!r.ok) return errMsg(r)});
+}
+function recordar(){try{if($("rec").checked) localStorage.setItem("asteria_gh",JSON.stringify({repo:$("repo").value.trim(),tok:$("tok").value.trim()})); else localStorage.removeItem("asteria_gh")}catch(e){}}
+try{var g=JSON.parse(localStorage.getItem("asteria_gh")||"null"); if(g){$("repo").value=g.repo||$("repo").value;$("tok").value=g.tok||"";$("rec").checked=true}}catch(e){}
+function h(t){return String(t==null?"":t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function pagina(p,U){
+  var desc=h(p.nombre+" de "+p.marca+": "+(p.familia||p.tipo)+". Perfume 100% original. Pedilo por WhatsApp."), notas=[p.salida,p.corazon,p.fondo].filter(Boolean).join("; ");
+  return '<!DOCTYPE html>\n<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">\n<title>'+h(p.nombre)+' · '+h(p.marca)+' · Asteria Fragancias</title>\n<meta name="description" content="'+desc+'">\n<meta property="og:type" content="product"><meta property="og:title" content="'+h(p.nombre)+' · '+h(p.marca)+'"><meta property="og:description" content="'+desc+'">\n<meta property="og:image" content="'+U+'foto-'+p.id+'.jpg"><meta property="og:url" content="'+U+'perfume-'+p.id+'.html"><meta name="twitter:card" content="summary_large_image">\n<meta http-equiv="refresh" content="0;url=index.html#perfume-'+p.id+'"><link rel="icon" href="favicon.png"></head>\n<body style="font-family:system-ui,sans-serif;max-width:640px;margin:40px auto;padding:0 20px;color:#3b2f26;background:#f5ece2">\n<h1>'+h(p.nombre)+'</h1><p>'+h(p.marca)+' · '+h(p.tipo)+' · '+p.ml+' ml</p><p>'+h(p.perfil)+'</p><p>'+h(notas)+'</p>\n<p><a href="index.html#perfume-'+p.id+'">Ver en la tienda</a></p>\n<script>location.replace("index.html#perfume-'+p.id+'")<\/script></body></html>\n';
+}
+function subirPaginas(ids){
+  var U=D.url||"";
+  return D.productos.filter(function(p){return ids.indexOf(p.id)>-1}).reduce(function(pr,p){return pr.then(function(){return subir("perfume-"+p.id+".html",b64(pagina(p,U)),"Página de "+p.nombre)})},Promise.resolve());
+}
+$("pub").onclick=function(){
+  recordar(); estado("Publicando…");
+  var txt=armar(), ids=nuevos.slice();
+  subir("datos.js",b64(txt),"Actualizar datos de la tienda").then(function(){return subirPaginas(ids)}).then(function(){nuevos=[];estado("Listo. En uno o dos minutos la tienda muestra los cambios.")}).catch(function(e){estado("No se pudo publicar: "+e.message)});
+};
+$("pags").onclick=function(){
+  recordar(); armar(); estado("Actualizando páginas…");
+  subirPaginas(D.productos.map(function(p){return p.id})).then(function(){estado("Listo. Páginas para compartir actualizadas.")}).catch(function(e){estado("No se pudo publicar: "+e.message)});
+};
+$("galf").addEventListener("change",function(e){
+  var f=e.target.files[0]; if(!f) return; recordar(); $("gals").textContent="Subiendo foto…";
+  var nom="galeria-"+Date.now().toString(36)+".jpg";
+  reducir(f).then(function(c){return subir(nom,c,"Foto de la galería")}).then(function(){$("gal").value=($("gal").value.trim()?$("gal").value.trim()+"\n":"")+nom;$("gals").textContent='Foto subida. Tocá "Publicar cambios" para que aparezca en la tienda.'}).catch(function(er){$("gals").textContent="No se pudo subir: "+er.message});
+});
+function reducir(file){return new Promise(function(ok,no){
+  var img=new Image(), u=URL.createObjectURL(file);
+  img.onload=function(){var s=Math.min(img.width,img.height),c=document.createElement("canvas");c.width=c.height=900;c.getContext("2d").drawImage(img,(img.width-s)/2,(img.height-s)/2,s,s,0,0,900,900);URL.revokeObjectURL(u);ok(c.toDataURL("image/jpeg",.85).split(",")[1])};
+  img.onerror=function(){no(new Error("No se pudo leer la imagen."))}; img.src=u;
+})}
+$("lista").addEventListener("change",function(e){
+  var t=e.target; if(t.dataset.foto==null||!t.files[0]) return;
+  var p=D.productos[+t.dataset.foto], n=$("fs"+t.dataset.foto); recordar(); n.textContent="Subiendo foto…";
+  reducir(t.files[0]).then(function(c){return subir("foto-"+p.id+".jpg",c,"Foto de "+p.nombre)}).then(function(){n.textContent="Foto publicada."}).catch(function(er){n.textContent="No se pudo subir: "+er.message});
+});
 lista();
 </script>
 </body>

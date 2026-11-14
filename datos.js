@@ -20,9 +20,16 @@ window.TIENDA = {
    "salida": "Limón, pimienta rosa, menta y grosella negra",
    "corazon": "Manzana, incienso y cedro",
    "fondo": "Pachulí, jazmín, jengibre y sándalo",
-   "perfil": "Una fragancia fresca, dinámica y moderna. Combina cítricos y menta con notas frutales y un fondo amaderado. Un aroma versátil, elegante y juvenil. Ideal para oficina, universidad, primavera y verano.",
+   "perfil": "Una fragancia fresca, dinámica y moderna. Combina cítricos y menta con notas frutales y un fondo amaderado. Un aroma versátil, elegante y juvenil.",
    "color": "#2bb5d6",
-   "precioTarjeta": 118500
+   "precioTarjeta": 118500,
+   "usos": [
+    "Oficina",
+    "Universidad",
+    "Primavera",
+    "Verano"
+   ],
+   "stock": null
   },
   {
    "id": 2,
@@ -41,9 +48,15 @@ window.TIENDA = {
    "salida": "",
    "corazon": "",
    "fondo": "",
-   "perfil": "Fresco, acuático, cítrico y aromático. Una fragancia de estilo deportivo y moderno, con una sensación limpia y refrescante. Ideal para quienes buscan un perfume versátil, ligero y fácil de llevar. Ideal para verano, actividades al aire libre y uso diario.",
+   "perfil": "Fresco, acuático, cítrico y aromático. Una fragancia de estilo deportivo y moderno, con una sensación limpia y refrescante.",
    "color": "#2e9e5b",
-   "precioTarjeta": 109500
+   "precioTarjeta": 109500,
+   "usos": [
+    "Verano",
+    "Aire libre",
+    "Uso diario"
+   ],
+   "stock": null
   },
   {
    "id": 3,
@@ -62,9 +75,15 @@ window.TIENDA = {
    "salida": "Manzana helada, bergamota italiana, limón y anís estrellado",
    "corazon": "Flor de azahar, notas marinas, ciruela helada y cardamomo",
    "fondo": "Musgo cristalino, madera flotante, ámbar y almizcle",
-   "perfil": "Una fragancia intensa y refrescante que transmite energía y frescura. Combina cítricos, frutas y notas acuáticas con un fondo amaderado y elegante. Ideal para verano, actividades diarias y ocasiones informales.",
+   "perfil": "Una fragancia intensa y refrescante que transmite energía y frescura. Combina cítricos, frutas y notas acuáticas con un fondo amaderado y elegante.",
    "color": "#6f72c8",
-   "precioTarjeta": 136200
+   "precioTarjeta": 136200,
+   "usos": [
+    "Verano",
+    "Actividades diarias",
+    "Ocasiones informales"
+   ],
+   "stock": null
   },
   {
    "id": 4,
@@ -83,9 +102,15 @@ window.TIENDA = {
    "salida": "Ananá, naranja y pomelo",
    "corazon": "Iris, ámbar y lavanda",
    "fondo": "Haba tonka, almizcle, pachulí y cashmeran",
-   "perfil": "Una fragancia moderna, tropical y sofisticada. Combina notas frutales y cítricas con un fondo dulce y amaderado. Un aroma fresco, atractivo y con personalidad. Ideal para primavera, verano y salidas.",
+   "perfil": "Una fragancia moderna, tropical y sofisticada. Combina notas frutales y cítricas con un fondo dulce y amaderado. Un aroma fresco, atractivo y con personalidad.",
    "color": "#1d8fa0",
-   "precioTarjeta": 135900
+   "precioTarjeta": 135900,
+   "usos": [
+    "Primavera",
+    "Verano",
+    "Salidas"
+   ],
+   "stock": null
   },
   {
    "id": 5,
@@ -104,9 +129,15 @@ window.TIENDA = {
    "salida": "Champagne, fresa, mandarina, naranja sanguina y grosella negra",
    "corazon": "Gardenia, jazmín, orquídea y vainilla",
    "fondo": "Ámbar, praliné, sándalo y almizcle",
-   "perfil": "Una fragancia chispeante, dulce y sofisticada. Su combinación de frutas jugosas, flores y notas cálidas crea un aroma femenino, envolvente y elegante, con un toque festivo. Ideal para primavera, verano y ocasiones especiales.",
+   "perfil": "Una fragancia chispeante, dulce y sofisticada. Su combinación de frutas jugosas, flores y notas cálidas crea un aroma femenino, envolvente y elegante, con un toque festivo.",
    "color": "#e8a9b0",
-   "precioTarjeta": 115200
+   "precioTarjeta": 115200,
+   "usos": [
+    "Primavera",
+    "Verano",
+    "Ocasiones especiales"
+   ],
+   "stock": null
   },
   {
    "id": 6,
@@ -125,9 +156,15 @@ window.TIENDA = {
    "salida": "Lichi, frambuesa y hojas de violeta",
    "corazon": "Rosa blanca, peonía y jazmín",
    "fondo": "Almizcle y vainilla",
-   "perfil": "Una fragancia dulce, fresca y romántica. Sus notas frutales se combinan con flores delicadas y un fondo suave de vainilla y almizcle. Un aroma femenino, juvenil y encantador. Ideal para primavera, verano y uso diario.",
+   "perfil": "Una fragancia dulce, fresca y romántica. Sus notas frutales se combinan con flores delicadas y un fondo suave de vainilla y almizcle. Un aroma femenino, juvenil y encantador.",
    "color": "#d9a0a0",
-   "precioTarjeta": 87600
+   "precioTarjeta": 87600,
+   "usos": [
+    "Primavera",
+    "Verano",
+    "Uso diario"
+   ],
+   "stock": null
   },
   {
    "id": 7,
@@ -146,9 +183,16 @@ window.TIENDA = {
    "salida": "Naranja, bergamota, pomelo y durazno",
    "corazon": "Rosa, jazmín, lichi y geranio",
    "fondo": "Pachulí, vainilla, almizcle y vetiver",
-   "perfil": "Una fragancia femenina, elegante y sofisticada. Combina cítricos y frutas jugosas con un delicado corazón floral y un fondo cálido y envolvente. Ideal para destacar con un aroma distinguido, de día y de noche, en primavera y otoño.",
+   "perfil": "Una fragancia femenina, elegante y sofisticada. Combina cítricos y frutas jugosas con un delicado corazón floral y un fondo cálido y envolvente.",
    "color": "#e9c9a0",
-   "precioTarjeta": 125400
+   "precioTarjeta": 125400,
+   "usos": [
+    "Día",
+    "Noche",
+    "Primavera",
+    "Otoño"
+   ],
+   "stock": null
   },
   {
    "id": 8,
@@ -167,9 +211,14 @@ window.TIENDA = {
    "salida": "Bergamota y naranja",
    "corazon": "Pera y vainilla",
    "fondo": "Almizcle y ámbar",
-   "perfil": "Una fragancia delicada, limpia y sofisticada. Su combinación de notas frutales, dulces y almizcladas crea un aroma suave y elegante, ideal para quienes prefieren perfumes sutiles y versátiles. Ideal para uso diario y todas las estaciones.",
+   "perfil": "Una fragancia delicada, limpia y sofisticada. Su combinación de notas frutales, dulces y almizcladas crea un aroma suave y elegante, ideal para quienes prefieren perfumes sutiles y versátiles.",
    "color": "#e6d3a8",
-   "precioTarjeta": 65400
+   "precioTarjeta": 65400,
+   "usos": [
+    "Uso diario",
+    "Todas las estaciones"
+   ],
+   "stock": null
   },
   {
    "id": 9,
@@ -188,17 +237,23 @@ window.TIENDA = {
    "salida": "Mango, coco y maracuyá",
    "corazon": "Jazmín, flor de azahar y heliotropo",
    "fondo": "Vainilla, almizcle y cashmeran",
-   "perfil": "Una fragancia tropical, dulce y luminosa. Combina frutas exóticas con la cremosidad del coco y la suavidad de la vainilla. Ideal para quienes buscan un aroma femenino, alegre y envolvente. Ideal para primavera, verano y uso diario.",
+   "perfil": "Una fragancia tropical, dulce y luminosa. Combina frutas exóticas con la cremosidad del coco y la suavidad de la vainilla.",
    "color": "#e8a317",
-   "precioTarjeta": 87600
+   "precioTarjeta": 87600,
+   "usos": [
+    "Primavera",
+    "Verano",
+    "Uso diario"
+   ],
+   "stock": null
   }
  ],
  "instagram": "asteria.fragancias",
  "nosotros": "Asteria Fragancias nace del amor por los perfumes. Elegimos cada fragancia con cuidado para que encuentres la que cuenta tu historia y deja huella donde vayas. Todos nuestros perfumes son 100% originales.",
  "envios": [
-  "Retiro en persona en Mendoza.",
-  "Envío a domicilio en Mendoza.",
-  "Coordinamos cada entrega por WhatsApp."
+  "Puntos de encuentro: Centro, Dorrego / Unimev y Godoy Cruz.",
+  "Envío a domicilio por Uber Moto: se coordina por WhatsApp.",
+  "Coordinamos día y horario de cada entrega por WhatsApp."
  ],
  "pagos": [
   "Transferencia bancaria",
@@ -207,5 +262,51 @@ window.TIENDA = {
  ],
  "pagoInfo": "",
  "resenas": [],
- "analytics": ""
+ "analytics": "",
+ "legal": {
+  "razon": "",
+  "cuit": "",
+  "domicilio": "",
+  "email": "",
+  "politica": ""
+ },
+ "url": "https://luceromelina35-sys.github.io/asteria-fragancias/",
+ "puntos": [
+  "Centro",
+  "Dorrego / Unimev",
+  "Godoy Cruz"
+ ],
+ "puntosInfo": "Coordinamos día y horario por WhatsApp.",
+ "domicilio": {
+  "activo": true,
+  "texto": "Envío a domicilio por Uber Moto. El costo y el horario se coordinan por WhatsApp."
+ },
+ "faq": [
+  {
+   "p": "¿Los perfumes son originales?",
+   "r": "Sí. Todos nuestros perfumes son 100% originales."
+  },
+  {
+   "p": "¿Cómo hago mi pedido?",
+   "r": "Elegí tus perfumes, agregalos al pedido y tocá \"Enviar pedido por WhatsApp\". Ahí confirmamos disponibilidad, pago y entrega."
+  },
+  {
+   "p": "¿Cómo puedo pagar?",
+   "r": "Con transferencia o efectivo, que tienen descuento, o con tarjeta en 3 cuotas sin interés."
+  },
+  {
+   "p": "¿Dónde y cómo recibo mi pedido?",
+   "r": "Tenemos puntos de encuentro en el Centro, en Dorrego / Unimev y en Godoy Cruz. Si necesitás envío a domicilio, lo coordinamos por WhatsApp y se envía por Uber Moto."
+  },
+  {
+   "p": "¿Cómo cuido mi perfume?",
+   "r": "Guardalo en su caja, bien cerrado y lejos del sol, del calor y de la humedad. Evitá dejarlo en el auto o en el baño."
+  },
+  {
+   "p": "¿Cómo hago para que dure más?",
+   "r": "Aplicalo sobre la piel limpia e hidratada, en muñecas y cuello, sin frotar. En la guía de fragancias tenés más consejos."
+  }
+ ],
+ "galeria": [],
+ "pedidosUrl": ""
 };
