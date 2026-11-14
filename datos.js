@@ -1,7 +1,7 @@
 // Archivo de datos de la tienda. Se edita desde admin.html
 window.TIENDA = {
  "nombre": "Asteria Fragancias",
- "whatsapp": "",
+ "whatsapp": "5492612579508",
  "productos": [
   {
    "id": 1,
@@ -13,7 +13,7 @@ window.TIENDA = {
    "estilo": "fresco",
    "momento": "dia",
    "etiqueta": "",
-   "precio": null,
+   "precio": 91400,
    "agotado": false,
    "destacado": false,
    "familia": "Fresca amaderada aromática",
@@ -22,7 +22,7 @@ window.TIENDA = {
    "fondo": "Pachulí, jazmín, jengibre y sándalo",
    "perfil": "Una fragancia fresca, dinámica y moderna. Combina cítricos y menta con notas frutales y un fondo amaderado. Un aroma versátil, elegante y juvenil. Ideal para oficina, universidad, primavera y verano.",
    "color": "#2bb5d6",
-   "precioTarjeta": null
+   "precioTarjeta": 118500
   },
   {
    "id": 2,
@@ -34,7 +34,7 @@ window.TIENDA = {
    "estilo": "fresco",
    "momento": "dia",
    "etiqueta": "",
-   "precio": null,
+   "precio": 84500,
    "agotado": false,
    "destacado": false,
    "familia": "Aromática acuática",
@@ -43,7 +43,7 @@ window.TIENDA = {
    "fondo": "",
    "perfil": "Fresco, acuático, cítrico y aromático. Una fragancia de estilo deportivo y moderno, con una sensación limpia y refrescante. Ideal para quienes buscan un perfume versátil, ligero y fácil de llevar. Ideal para verano, actividades al aire libre y uso diario.",
    "color": "#2e9e5b",
-   "precioTarjeta": null
+   "precioTarjeta": 109500
   },
   {
    "id": 3,
@@ -55,7 +55,7 @@ window.TIENDA = {
    "estilo": "fresco",
    "momento": "dia",
    "etiqueta": "",
-   "precio": null,
+   "precio": 104900,
    "agotado": false,
    "destacado": true,
    "familia": "Aromática acuática amaderada",
@@ -64,7 +64,7 @@ window.TIENDA = {
    "fondo": "Musgo cristalino, madera flotante, ámbar y almizcle",
    "perfil": "Una fragancia intensa y refrescante que transmite energía y frescura. Combina cítricos, frutas y notas acuáticas con un fondo amaderado y elegante. Ideal para verano, actividades diarias y ocasiones informales.",
    "color": "#6f72c8",
-   "precioTarjeta": null
+   "precioTarjeta": 136200
   },
   {
    "id": 4,
@@ -76,7 +76,7 @@ window.TIENDA = {
    "estilo": "fresco",
    "momento": "ambos",
    "etiqueta": "",
-   "precio": null,
+   "precio": 104700,
    "agotado": false,
    "destacado": false,
    "familia": "Aromática frutal ambarada",
@@ -85,7 +85,7 @@ window.TIENDA = {
    "fondo": "Haba tonka, almizcle, pachulí y cashmeran",
    "perfil": "Una fragancia moderna, tropical y sofisticada. Combina notas frutales y cítricas con un fondo dulce y amaderado. Un aroma fresco, atractivo y con personalidad. Ideal para primavera, verano y salidas.",
    "color": "#1d8fa0",
-   "precioTarjeta": null
+   "precioTarjeta": 135900
   },
   {
    "id": 5,
@@ -97,7 +97,7 @@ window.TIENDA = {
    "estilo": "dulce",
    "momento": "noche",
    "etiqueta": "",
-   "precio": null,
+   "precio": 88800,
    "agotado": false,
    "destacado": false,
    "familia": "Floral frutal gourmand",
@@ -106,7 +106,7 @@ window.TIENDA = {
    "fondo": "Ámbar, praliné, sándalo y almizcle",
    "perfil": "Una fragancia chispeante, dulce y sofisticada. Su combinación de frutas jugosas, flores y notas cálidas crea un aroma femenino, envolvente y elegante, con un toque festivo. Ideal para primavera, verano y ocasiones especiales.",
    "color": "#e8a9b0",
-   "precioTarjeta": null
+   "precioTarjeta": 115200
   },
   {
    "id": 6,
@@ -118,7 +118,7 @@ window.TIENDA = {
    "estilo": "floral",
    "momento": "dia",
    "etiqueta": "",
-   "precio": null,
+   "precio": 67500,
    "agotado": false,
    "destacado": true,
    "familia": "Floral frutal",
@@ -127,7 +127,7 @@ window.TIENDA = {
    "fondo": "Almizcle y vainilla",
    "perfil": "Una fragancia dulce, fresca y romántica. Sus notas frutales se combinan con flores delicadas y un fondo suave de vainilla y almizcle. Un aroma femenino, juvenil y encantador. Ideal para primavera, verano y uso diario.",
    "color": "#d9a0a0",
-   "precioTarjeta": null
+   "precioTarjeta": 87600
   },
   {
    "id": 7,
@@ -139,7 +139,7 @@ window.TIENDA = {
    "estilo": "floral",
    "momento": "ambos",
    "etiqueta": "",
-   "precio": null,
+   "precio": 96700,
    "agotado": false,
    "destacado": false,
    "familia": "Floral frutal amaderada",
@@ -148,7 +148,7 @@ window.TIENDA = {
    "fondo": "Pachulí, vainilla, almizcle y vetiver",
    "perfil": "Una fragancia femenina, elegante y sofisticada. Combina cítricos y frutas jugosas con un delicado corazón floral y un fondo cálido y envolvente. Ideal para destacar con un aroma distinguido, de día y de noche, en primavera y otoño.",
    "color": "#e9c9a0",
-   "precioTarjeta": null
+   "precioTarjeta": 125400
   },
   {
    "id": 8,
@@ -160,7 +160,7 @@ window.TIENDA = {
    "estilo": "dulce",
    "momento": "ambos",
    "etiqueta": "",
-   "precio": null,
+   "precio": 50500,
    "agotado": false,
    "destacado": false,
    "familia": "Oriental almizclada",
@@ -169,7 +169,7 @@ window.TIENDA = {
    "fondo": "Almizcle y ámbar",
    "perfil": "Una fragancia delicada, limpia y sofisticada. Su combinación de notas frutales, dulces y almizcladas crea un aroma suave y elegante, ideal para quienes prefieren perfumes sutiles y versátiles. Ideal para uso diario y todas las estaciones.",
    "color": "#e6d3a8",
-   "precioTarjeta": null
+   "precioTarjeta": 65400
   },
   {
    "id": 9,
@@ -181,7 +181,7 @@ window.TIENDA = {
    "estilo": "dulce",
    "momento": "dia",
    "etiqueta": "",
-   "precio": null,
+   "precio": 67500,
    "agotado": false,
    "destacado": true,
    "familia": "Floral frutal tropical",
@@ -190,11 +190,11 @@ window.TIENDA = {
    "fondo": "Vainilla, almizcle y cashmeran",
    "perfil": "Una fragancia tropical, dulce y luminosa. Combina frutas exóticas con la cremosidad del coco y la suavidad de la vainilla. Ideal para quienes buscan un aroma femenino, alegre y envolvente. Ideal para primavera, verano y uso diario.",
    "color": "#e8a317",
-   "precioTarjeta": null
+   "precioTarjeta": 87600
   }
  ],
- "instagram": "",
- "nosotros": "Asteria Fragancias nace del amor por los perfumes. Elegimos cada fragancia con cuidado para que encuentres la que cuenta tu historia y deja huella donde vayas.",
+ "instagram": "asteria.fragancias",
+ "nosotros": "Asteria Fragancias nace del amor por los perfumes. Elegimos cada fragancia con cuidado para que encuentres la que cuenta tu historia y deja huella donde vayas. Todos nuestros perfumes son 100% originales.",
  "envios": [
   "Retiro en persona en Mendoza.",
   "Envío a domicilio en Mendoza.",
