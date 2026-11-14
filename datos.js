@@ -270,7 +270,7 @@ window.TIENDA = {
   "domicilio": "",
   "politica": ""
  },
- "url": "https://luceromelina35-sys.github.io/asteria-fragancias/",
+ "url": "https://asteriafragancias.github.io/asteria-fragancias/",
  "puntos": [
   "Centro",
   "Dorrego / Unimev",
