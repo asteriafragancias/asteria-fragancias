@@ -281,32 +281,7 @@ window.TIENDA = {
   "activo": true,
   "texto": "Envío a domicilio por Uber Moto. El costo y el horario se coordinan por WhatsApp."
  },
- "faq": [
-  {
-   "p": "¿Los perfumes son originales?",
-   "r": "Sí. Todos nuestros perfumes son 100% originales."
-  },
-  {
-   "p": "¿Cómo hago mi pedido?",
-   "r": "Elegí tus perfumes, agregalos al pedido y tocá \"Enviar pedido por WhatsApp\". Ahí confirmamos disponibilidad, pago y entrega."
-  },
-  {
-   "p": "¿Cómo puedo pagar?",
-   "r": "Con transferencia o efectivo, que tienen descuento, o con tarjeta en 3 cuotas sin interés."
-  },
-  {
-   "p": "¿Dónde y cómo recibo mi pedido?",
-   "r": "Tenemos puntos de encuentro en el Centro, en Dorrego / Unimev y en Godoy Cruz. Si necesitás envío a domicilio, lo coordinamos por WhatsApp y se envía por Uber Moto."
-  },
-  {
-   "p": "¿Cómo cuido mi perfume?",
-   "r": "Guardalo en su caja, bien cerrado y lejos del sol, del calor y de la humedad. Evitá dejarlo en el auto o en el baño."
-  },
-  {
-   "p": "¿Cómo hago para que dure más?",
-   "r": "Aplicalo sobre la piel limpia e hidratada, en muñecas y cuello, sin frotar. En la guía de fragancias tenés más consejos."
-  }
- ],
+ "faq": [],
  "galeria": [],
  "pedidosUrl": "https://script.google.com/macros/s/AKfycbz2ixqJMehW9pv2De88uJSf2dMmbZ4yELTQ7EhlmKCG09hpKXsBS15saHu-qoNnJ2Dr/exec"
 };
