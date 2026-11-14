@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Administración · Asteria</title>
+<link rel="icon" href="favicon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;1,500&display=swap">
+<style>
+:root{--bg:#f5ece2;--surface:#fffaf4;--ink:#3b2f26;--muted:#7a695a;--line:#e4d3c0;--accent:#c9a063;--accent-ink:#2a2018;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Montserrat,system-ui,sans-serif}
+main{max-width:720px;margin:0 auto;padding:28px 18px 60px}
+h1{font:italic 500 2rem "Playfair Display",Georgia,serif;color:#8a6125;margin:0 0 6px}
+h2{font:500 1.25rem "Playfair Display",Georgia,serif;margin:22px 0 10px}
+.hint{color:var(--muted);font-size:.92rem;margin:0 0 16px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:16px;margin-bottom:12px}
+label{display:block;font-size:.85rem;color:var(--muted);margin-top:10px}
+input[type=text],input[type=number],select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:10px;margin-top:4px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.chk{display:flex;align-items:center;gap:8px;margin-top:12px;color:var(--ink);font-size:.95rem}
+details.box summary{cursor:pointer;font-weight:700}
+details.box summary small{font-weight:400;color:var(--muted);margin-left:6px}
+button{font:inherit;cursor:pointer;border:0;border-radius:3px;background:var(--accent);color:var(--accent-ink);font-weight:700;padding:14px;width:100%}
+button.sec{background:transparent;border:1px solid var(--accent);color:#8a6125;margin-bottom:12px}
+button.del{background:transparent;color:#a33;border:1px solid #d9b0b0;margin-top:14px;padding:10px}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.nota{color:var(--muted);font-size:.85rem;margin-top:8px}
+ol{color:var(--muted);font-size:.92rem;padding-left:20px}
+</style>
+</head>
+<body>
+<main>
+  <h1>Administración</h1>
+  <p class="hint">Editá todo y tocá "Descargar datos.js" al final. Los cambios se ven en la tienda cuando subís ese archivo.</p>
+
+  <h2>Datos generales</h2>
+  <div class="box">
+    <label for="wa">Número de WhatsApp (código de país, sin + ni espacios)</label>
+    <input type="text" id="wa" inputmode="numeric" placeholder="Ej: 5492611234567">
+    <label for="ig">Instagram (usuario, sin @)</label>
+    <input type="text" id="ig" placeholder="Ej: asteria.fragancias">
+    <label for="ga">Código de Google Analytics (opcional, empieza con G-)</label>
+    <input type="text" id="ga" placeholder="Ej: G-ABC123XYZ">
+  </div>
+  <div class="box">
+    <label for="pagos">Medios de pago (uno por línea)</label>
+    <textarea id="pagos" rows="3"></textarea>
+    <label for="pinfo">Datos para pagar (alias, link de Mercado Pago, etc.). Se muestran al cliente en su pedido</label>
+    <textarea id="pinfo" rows="3"></textarea>
+  </div>
+  <div class="box">
+    <label for="nos">Texto de "Nosotros"</label>
+    <textarea id="nos" rows="4"></textarea>
+    <label for="env">Envíos (una línea por opción)</label>
+    <textarea id="env" rows="3"></textarea>
+    <label for="res">Opiniones de clientes (una por línea, con el formato: Nombre | Texto)</label>
+    <textarea id="res" rows="4" placeholder="María | Me encantó, llegó rapidísimo."></textarea>
+  </div>
+
+  <h2>Productos</h2>
+  <div id="lista"></div>
+  <button class="sec" id="nuevo" type="button">+ Agregar producto</button>
+  <p class="nota">La foto de cada producto va en la carpeta fotos con su número, por ejemplo fotos/10.jpg.</p>
+
+  <button id="bajar" type="button" style="margin-top:16px">Descargar datos.js</button>
+  <div class="box" style="margin-top:16px"><ol>
+    <li>Tocá "Descargar datos.js".</li>
+    <li>Subí ese archivo a GitHub reemplazando el anterior.</li>
+    <li>Recargá la tienda: ya aparecen los cambios.</li>
+  </ol></div>
+</main>
+<script src="datos.js"></script>
+<script>
+var D = window.TIENDA;
+var $ = function(id){return document.getElementById(id)};
+function esc(t){return String(t==null?"":t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+var SEL = {
+  genero:[["ella","Ella"],["el","Él"],["unisex","Unisex"]],
+  estilo:[["fresco","Fresco"],["dulce","Dulce"],["floral","Floral"],["amaderado","Amaderado"]],
+  momento:[["dia","De día"],["noche","De noche"],["ambos","Todo el día"]],
+  etiqueta:[["","Ninguna"],["novedad","Novedad"],["ultimas","Últimas unidades"]]
+};
+var CAMPOS = [
+  ["nombre","Nombre","text"],["marca","Marca","text"],["tipo","Tipo (ej: Eau de parfum)","text"],["ml","Contenido (ml)","number"],
+  ["precioTarjeta","Precio de lista, 3 cuotas sin interés ($)","number"],["precio","Precio con descuento por transferencia o efectivo ($)","number"],["genero","Para","sel"],["estilo","Estilo (para el test de aroma)","sel"],["momento","Momento de uso","sel"],
+  ["etiqueta","Etiqueta","sel"],["familia","Familia olfativa","text"],["salida","Notas de salida","text"],["corazon","Notas de corazón","text"],
+  ["fondo","Notas de fondo","text"],["perfil","Descripción","ta"]
+];
+$("wa").value = D.whatsapp || "";
+$("ig").value = D.instagram || "";
+$("ga").value = D.analytics || "";
+$("pagos").value = (D.pagos || []).join("\n");
+$("pinfo").value = D.pagoInfo || "";
+$("nos").value = D.nosotros || "";
+$("env").value = (D.envios || []).join("\n");
+$("res").value = (D.resenas || []).map(function(r){return r.nombre + " | " + r.texto}).join("\n");
+
+function campo(p,i,c){
+  var k=c[0], v=p[k]==null?"":p[k], id="c"+i+"_"+k, h='<label for="'+id+'">'+c[1]+'</label>';
+  if(c[2]==="sel") return h+'<select id="'+id+'" data-i="'+i+'" data-k="'+k+'">'+SEL[k].map(function(o){return '<option value="'+o[0]+'"'+(o[0]===v?" selected":"")+'>'+o[1]+'</option>'}).join("")+'</select>';
+  if(c[2]==="ta") return h+'<textarea id="'+id+'" rows="3" data-i="'+i+'" data-k="'+k+'">'+esc(v)+'</textarea>';
+  return h+'<input type="'+c[2]+'" id="'+id+'" data-i="'+i+'" data-k="'+k+'" value="'+esc(v)+'"'+(c[2]==="number"?' min="0"':"")+'>';
+}
+function lista(){
+  $("lista").innerHTML = D.productos.map(function(p,i){
+    return '<details class="box"><summary>'+esc(p.nombre)+'<small>foto: fotos/'+p.id+'.jpg</small></summary>'+
+      '<div class="g2">'+CAMPOS.filter(function(c){return c[2]!=="ta"}).map(function(c){return '<div>'+campo(p,i,c)+'</div>'}).join("")+'</div>'+
+      CAMPOS.filter(function(c){return c[2]==="ta"}).map(function(c){return campo(p,i,c)}).join("")+
+      '<label class="chk"><input type="checkbox" data-i="'+i+'" data-k="agotado"'+(p.agotado?" checked":"")+'> Agotado</label>'+
+      '<label class="chk"><input type="checkbox" data-i="'+i+'" data-k="destacado"'+(p.destacado?" checked":"")+'> Destacado en la portada</label>'+
+      '<button class="del" type="button" data-del="'+i+'">Eliminar producto</button></details>';
+  }).join("");
+}
+$("lista").addEventListener("input", function(e){
+  var t=e.target; if(t.dataset.i==null) return;
+  var p=D.productos[+t.dataset.i], k=t.dataset.k;
+  if(t.type==="checkbox") p[k]=t.checked;
+  else if(t.type==="number"){var n=parseInt(t.value,10); p[k]=n>0?n:(k==="precio"||k==="precioTarjeta"?null:p[k])}
+  else p[k]=t.value;
+});
+$("lista").addEventListener("click", function(e){
+  var b=e.target.closest("[data-del]"); if(!b) return;
+  var p=D.productos[+b.dataset.del];
+  if(confirm("¿Eliminar " + p.nombre + "?")){D.productos.splice(+b.dataset.del,1); lista()}
+});
+$("nuevo").onclick=function(){
+  var id=D.productos.reduce(function(m,p){return Math.max(m,p.id)},0)+1;
+  D.productos.push({id:id,nombre:"Nuevo perfume",marca:"",tipo:"Eau de parfum",ml:100,genero:"unisex",estilo:"fresco",momento:"ambos",etiqueta:"novedad",precio:null,precioTarjeta:null,agotado:false,destacado:false,familia:"",salida:"",corazon:"",fondo:"",perfil:"",color:"#c9a063"});
+  lista();
+  var d=$("lista").lastElementChild; d.open=true; d.scrollIntoView({behavior:"smooth"});
+};
+function lineas(id){return $(id).value.split("\n").map(function(x){return x.trim()}).filter(Boolean)}
+$("bajar").onclick=function(){
+  D.whatsapp=$("wa").value.replace(/\D/g,"");
+  D.instagram=$("ig").value.trim().replace(/^@/,"");
+  D.analytics=$("ga").value.trim();
+  D.pagos=lineas("pagos"); D.pagoInfo=$("pinfo").value.trim();
+  D.nosotros=$("nos").value.trim(); D.envios=lineas("env");
+  D.resenas=lineas("res").map(function(l){var i=l.indexOf("|");return i<0?{nombre:"Cliente",texto:l}:{nombre:l.slice(0,i).trim()||"Cliente",texto:l.slice(i+1).trim()}}).filter(function(r){return r.texto});
+  var txt="// Archivo de datos de la tienda. Se edita desde admin.html\nwindow.TIENDA = "+JSON.stringify(D,null,1)+";\n";
+  var a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([txt],{type:"text/javascript"}));
+  a.download="datos.js"; document.body.appendChild(a); a.click(); a.remove();
+};
+lista();
+</script>
+</body>
+</html>

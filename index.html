@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Asteria Fragancias · Un universo de esencias</title>
+<meta name="description" content="Asteria Fragancias: perfumería árabe seleccionada con cuidado. Armá tu pedido y lo confirmamos por WhatsApp.">
+<link rel="icon" href="favicon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Allura&family=Montserrat:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;1,500&display=swap">
+<style>
+:root{--bg:#f5ece2;--surface:#fffaf4;--ink:#3b2f26;--muted:#7a695a;--line:#e4d3c0;--accent:#c9a063;--accent-ink:#2a2018;--bronze:#8a6125;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Montserrat,system-ui,sans-serif}
+h1,h2,h3{font-family:"Playfair Display",Georgia,serif;font-weight:500;margin:0}
+header{max-width:960px;margin:0 auto;padding:8px 20px 36px;text-align:center}
+header:after{content:"✦";display:block;color:var(--accent);margin:22px auto 0;font-size:1.1rem}
+header h1{line-height:0;margin:0}
+.hero{width:min(760px,100%);height:auto;display:block;margin:0 auto;-webkit-mask-image:radial-gradient(ellipse 52% 55% at 50% 50%,#000 62%,transparent 100%);mask-image:radial-gradient(ellipse 52% 55% at 50% 50%,#000 62%,transparent 100%)}
+header p{max-width:46ch;color:var(--muted);margin:16px auto 0}
+main{max-width:960px;margin:0 auto;padding:0 20px 120px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);box-shadow:0 6px 18px rgba(90,60,30,.07);border-radius:4px;overflow:hidden;display:flex;flex-direction:column}
+.stage{position:relative;aspect-ratio:1/1;display:grid;place-items:end center;padding-bottom:22px;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--c) 16%,var(--surface)))}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bottle{position:relative;width:76px;height:112px;border-radius:10px 10px 14px 14px;border:2px solid color-mix(in srgb,var(--c) 70%,var(--ink));background:linear-gradient(90deg,color-mix(in srgb,var(--c) 85%,#fff),var(--c) 55%,color-mix(in srgb,var(--c) 70%,#000));box-shadow:inset 0 0 0 5px rgba(255,255,255,.18)}
+.bottle:before{content:"";position:absolute;left:50%;top:-24px;width:30px;height:24px;margin-left:-15px;border-radius:4px 4px 0 0;background:var(--accent)}
+.bottle:after{content:"";position:absolute;left:10px;top:16px;width:8px;height:60px;border-radius:6px;background:rgba(255,255,255,.4)}
+.info{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.info h3{font-size:1.3rem}
+.notes{color:var(--muted);font-size:.92rem;margin:0}
+.meta{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:12px}
+.price{font-weight:700;font-size:1.1rem}
+.ml{color:var(--muted);font-size:.85rem;margin-left:6px;font-weight:400}
+button{font:inherit;cursor:pointer;border:0;border-radius:3px}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.add{background:var(--accent);color:var(--accent-ink);padding:9px 16px;font-weight:500}
+.add:active{transform:scale(.96)}
+.bar{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:var(--surface);border-top:1px solid var(--line);display:none;z-index:5}
+.bar.on{display:block}
+.bar button{width:100%;max-width:960px;display:flex;justify-content:space-between;background:var(--ink);color:var(--bg);padding:14px 22px;font-weight:500;margin:0 auto}
+.sheet{position:fixed;inset:0;background:rgba(59,47,38,.55);display:none;z-index:10;align-items:flex-end;justify-content:center}
+.sheet.on{display:flex}
+.panel{background:var(--surface);width:100%;max-width:560px;max-height:88%;overflow:auto;border-radius:6px 6px 0 0;padding:22px 20px calc(22px + env(safe-area-inset-bottom,0px))}
+.panel h2{font-size:1.6rem;margin-bottom:12px}
+.row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.row .n{flex:1}
+.row small{color:var(--muted);display:block}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:32px;height:32px;background:var(--bg);color:var(--ink);border:1px solid var(--line);font-size:1.1rem}
+.total{display:flex;justify-content:space-between;font-weight:700;font-size:1.15rem;padding:14px 0}
+label{display:block;font-size:.9rem;color:var(--muted);margin-top:8px}
+input{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 12px;margin-top:4px}
+.send{width:100%;margin-top:16px;background:#1f9d55;color:#fff;padding:14px;font-weight:700}
+.close{background:none;color:var(--muted);width:100%;margin-top:8px;padding:10px}
+html{scroll-behavior:smooth}
+header .lema{font:400 clamp(2.2rem,8vw,3.4rem)/1.1 Allura,"Playfair Display",cursive;color:var(--bronze);margin:-6px auto 0}
+.cta{display:inline-block;margin-top:24px;background:var(--ink);color:var(--bg);padding:14px 30px;border-radius:3px;font-weight:500;letter-spacing:.06em;text-decoration:none}
+.cta:focus-visible,.rail a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.sec{font-weight:500;font-size:1.7rem;margin:36px 0 16px}
+.rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
+.rail a{flex:0 0 210px;scroll-snap-align:start;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.rail img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.rail span{display:block;padding:10px 12px;font:500 1.05rem "Playfair Display",Georgia,serif}
+.card{scroll-margin-top:16px}
+.info p,.info li{color:var(--muted);max-width:60ch;margin:0 0 6px}
+.info ul{padding-left:20px;margin:0}
+footer{border-top:1px solid var(--line);margin-top:20px;padding:32px 20px calc(96px + env(safe-area-inset-bottom,0px));text-align:center;color:var(--muted);font-size:.9rem}
+.f-marca{font:500 1.5rem "Playfair Display",serif;letter-spacing:.3em;color:var(--ink)}
+.f-marca small{display:block;font:400 .65rem Montserrat,sans-serif;letter-spacing:.5em;color:var(--muted);margin-top:4px}
+footer nav,.f-redes{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:14px 0}
+footer a{color:var(--bronze);text-decoration:none}
+footer a:hover{text-decoration:underline}
+footer a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+footer p{margin:8px 0 0}
+.filtros{margin:8px 0 18px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{background:transparent;color:var(--ink);border:1px solid var(--line);padding:8px 16px}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.fila{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.fila input,.fila select{margin:0}
+select{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 12px;margin-top:4px}
+.p3{display:block;font-weight:500;font-size:.8rem;color:var(--bronze);line-height:1.4;margin-top:3px}
+.off{display:inline-block;margin-left:6px;background:var(--bronze);color:#fff;font-size:.66rem;letter-spacing:.05em;padding:2px 6px;border-radius:2px;font-weight:700}
+.p2{display:block;font-weight:400;font-size:.76rem;color:var(--muted);line-height:1.35}
+.vacio{color:var(--muted)}
+.etq{position:absolute;top:10px;left:10px;z-index:1;background:var(--ink);color:var(--bg);font-size:.72rem;letter-spacing:.08em;padding:5px 10px;border-radius:2px;text-transform:uppercase}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:6;width:54px;height:54px;border-radius:50%;background:#1f9d55;color:#fff;display:grid;place-items:center;box-shadow:0 6px 16px rgba(0,0,0,.25)}
+.fab[hidden]{display:none}
+body.con-bar .fab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+.opt,.res{display:block;width:100%;text-align:left;margin:8px 0;padding:14px;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:3px;text-decoration:none}
+.res small{display:block;color:var(--muted)}
+.qt{font:500 1.2rem "Playfair Display",serif;margin:6px 0}
+.pago-info{color:var(--muted);font-size:.9rem;margin:6px 0 0;white-space:pre-line}
+.rev{margin:0 0 14px;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:4px;max-width:60ch}
+.rev p{margin:0 0 6px;color:var(--ink)}
+.rev cite{color:var(--bronze);font-style:normal;font-size:.9rem}
+.cta.alt{background:transparent;color:var(--bronze);border:1px solid var(--accent);margin-left:10px}
+.det{margin-top:6px;font-size:.9rem;color:var(--muted)}
+.det summary{cursor:pointer;color:var(--bronze)}
+.det p{margin:6px 0}
+.add:disabled,.send:disabled{opacity:.45;cursor:not-allowed}
+.empty{color:var(--muted);padding:12px 0}
+</style>
+</head>
+<body>
+<header>
+  <h1><img class="hero" src="portada.jpg" alt="Asteria Fragancias" width="1400" height="933"></h1>
+  <p class="lema">Fragancias para dejar huella.</p>
+  <p class="sub">Perfumería árabe seleccionada con cuidado. Armá tu pedido y lo confirmamos por WhatsApp.</p>
+  <a class="cta" href="#catalogo">Ver fragancias</a><button class="cta alt" id="quiz-open" type="button">Encontrá tu aroma</button>
+</header>
+<main>
+  <section id="destacados" hidden><h2 class="sec">Destacados</h2><div class="rail" id="rail"></div></section>
+  <h2 class="sec" id="catalogo">Todas las fragancias</h2>
+  <div class="filtros"><div class="chips" id="chips"></div><div class="fila"><input id="q" type="search" placeholder="Buscar perfume, marca o nota" aria-label="Buscar"><select id="marca" aria-label="Marca"></select></div></div>
+  <p class="vacio" id="vacio" hidden>No encontramos fragancias con ese filtro.</p>
+  <div class="grid" id="grid"></div>
+  <section class="info" id="resenas" hidden><h2 class="sec">Opiniones</h2><div id="t-res"></div></section>
+  <section class="info" id="nosotros"><h2 class="sec">Nosotros</h2><p id="t-nosotros"></p></section>
+  <section class="info" id="envios"><h2 class="sec">Envíos</h2><ul id="t-envios"></ul></section>
+  <section class="info" id="contacto"><h2 class="sec">Contacto</h2><div id="t-contacto"></div></section>
+</main>
+<footer>
+  <div class="f-marca">ASTERIA<small>FRAGANCIAS</small></div>
+  <nav aria-label="Secciones"><a href="#catalogo">Fragancias</a><a href="#nosotros">Nosotros</a><a href="#envios">Envíos</a><a href="#contacto">Contacto</a></nav>
+  <div class="f-redes" id="f-redes"></div>
+  <p>© <span id="f-year"></span> Asteria Fragancias</p>
+</footer>
+<a class="fab" id="fab" href="#" target="_blank" rel="noopener" hidden aria-label="Escribinos por WhatsApp"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20z"/></svg></a>
+<div class="sheet" id="quiz" role="dialog" aria-modal="true" aria-label="Encontrá tu aroma"><div class="panel"><h2>Encontrá tu aroma</h2><div id="quiz-body"></div><button class="close" id="quiz-close" type="button">Cerrar</button></div></div>
+<div class="bar" id="bar"><button id="open" type="button"><span id="count"></span><span id="sub"></span></button></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Tu pedido">
+  <div class="panel">
+    <h2>Tu pedido</h2>
+    <div id="items"></div>
+    <div class="total"><span>Total</span><span id="total"></span></div>
+    <label for="nombre">Tu nombre</label>
+    <input id="nombre" autocomplete="name">
+    <label for="nota">Entrega o comentarios (opcional)</label>
+    <input id="nota" placeholder="Ej: retiro en Mendoza / envío a domicilio">
+    <div id="pago-wrap" hidden><label for="pago">Medio de pago</label><select id="pago"></select><p class="pago-info" id="pago-info"></p></div>
+    <button class="send" id="send" type="button">Enviar pedido por WhatsApp</button>
+    <button class="close" id="close" type="button">Seguir mirando</button>
+  </div>
+</div>
+<script src="datos.js"></script>
+<script>
+var D = window.TIENDA, TIENDA = D.nombre, WA = D.whatsapp || "";
+var PRODUCTOS = D.productos;
+var $ = function(id){return document.getElementById(id)};
+var cart = {};
+function money(n){return "$" + n.toLocaleString("es-AR")}
+function find(id){return PRODUCTOS.filter(function(p){return p.id===id})[0]}
+function esc(t){return String(t==null?"":t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function norm(t){return String(t||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")}
+function L(a,b){return b?'<p><b>'+a+':</b> '+esc(b)+'</p>':""}
+var F={g:"todos",q:"",m:""},ETQ={novedad:"Novedad",ultimas:"Últimas unidades"};
+function usaTarjeta(){return /tarjeta|mercado/i.test($("pago").value)}
+function pr(p){return usaTarjeta()?(p.precioTarjeta||p.precio):(p.precio||p.precioTarjeta)}
+function precioHTML(p){
+  var ml='<span class="ml">'+p.ml+' ml</span>', L=p.precioTarjeta, E=p.precio;
+  if(!L&&!E)return 'Consultar'+ml;
+  if(!L)return money(E)+ml;
+  var h=money(L)+ml+'<small class="p2">3 cuotas sin interés de '+money(Math.round(L/3))+'</small>';
+  if(E&&E<L)h+='<small class="p3">'+money(E)+' por transferencia o efectivo<span class="off">'+Math.round((1-E/L)*100)+'% OFF</span></small>';
+  return h;
+}
+function visibles(){return PRODUCTOS.filter(function(p){
+  if(F.g!=="todos"&&p.genero!==F.g&&p.genero!=="unisex")return false;
+  if(F.m&&p.marca!==F.m)return false;
+  return !F.q||norm([p.nombre,p.marca,p.tipo,p.familia,p.salida,p.corazon,p.fondo].join(" ")).indexOf(norm(F.q))>-1})}
+function render(){
+  var v=visibles(); $("vacio").hidden=v.length>0;
+  $("grid").innerHTML = v.map(function(p){
+    var foto = p.foto || ("fotos/" + p.id + ".jpg");
+    var btn = p.agotado ? '<button class="add" type="button" disabled>Agotado</button>' : '<button class="add" type="button" data-id="'+p.id+'">Agregar</button>';
+    var det = (p.salida||p.perfil||p.familia) ? '<details class="det"><summary>Ver notas</summary>'+L("Familia",p.familia)+L("Salida",p.salida)+L("Corazón",p.corazon)+L("Fondo",p.fondo)+(p.perfil?'<p>'+esc(p.perfil)+'</p>':"")+'</details>' : "";
+    var etq = ETQ[p.etiqueta] ? '<span class="etq">'+ETQ[p.etiqueta]+'</span>' : "";
+    return '<article class="card" id="p'+p.id+'"><div class="stage" style="--c:'+p.color+'">'+etq+'<div class="bottle" style="--c:'+p.color+'"></div><img src="'+foto+'" alt="'+esc(p.nombre)+'" loading="lazy" onerror="this.remove()"></div>'+
+    '<div class="info"><h3>'+esc(p.nombre)+'</h3><p class="notes">'+esc(p.marca)+' · '+esc(p.tipo)+'</p>'+det+
+    '<div class="meta"><span class="price">'+precioHTML(p)+'</span>'+btn+'</div></div></article>';
+  }).join("");
+}
+function renderFiltros(){
+  var G=[["todos","Todos"],["ella","Ella"],["el","Él"],["unisex","Unisex"]];
+  $("chips").innerHTML=G.filter(function(g){return g[0]==="todos"||PRODUCTOS.some(function(p){return p.genero===g[0]})}).map(function(g){return '<button type="button" class="chip'+(F.g===g[0]?' on':'')+'" data-g="'+g[0]+'">'+g[1]+'</button>'}).join("");
+  var ms=[]; PRODUCTOS.forEach(function(p){if(p.marca&&ms.indexOf(p.marca)<0)ms.push(p.marca)});
+  $("marca").innerHTML='<option value="">Todas las marcas</option>'+ms.map(function(m){return '<option>'+esc(m)+'</option>'}).join("");
+  $("marca").value=F.m;
+}
+$("chips").addEventListener("click",function(e){var b=e.target.closest("[data-g]");if(!b)return;F.g=b.dataset.g;renderFiltros();render()});
+$("q").addEventListener("input",function(){F.q=this.value.trim();render()});
+$("marca").addEventListener("change",function(){F.m=this.value;render()});
+// Test de aroma
+var QZ=[{k:"genero",t:"¿Para quién es?",o:[["ella","Para ella"],["el","Para él"],["unisex","Me da igual"]]},{k:"momento",t:"¿Cuándo lo vas a usar?",o:[["dia","De día"],["noche","De noche"],["ambos","Todo el día"]]},{k:"estilo",t:"¿Qué aroma te atrae?",o:[["fresco","Fresco y limpio"],["dulce","Dulce y envolvente"],["floral","Floral y elegante"],["amaderado","Amaderado y profundo"]]}],qs=0,qa={};
+function quiz(){
+  var q=QZ[qs];
+  if(q){$("quiz-body").innerHTML='<p class="qt">'+q.t+'</p>'+q.o.map(function(o){return '<button type="button" class="opt" data-v="'+o[0]+'">'+o[1]+'</button>'}).join("");return}
+  var r=PRODUCTOS.filter(function(p){return !p.agotado&&(qa.genero==="unisex"||p.genero===qa.genero||p.genero==="unisex")}).map(function(p){var s=0;if(p.estilo===qa.estilo)s+=3;if(qa.momento==="ambos"||p.momento==="ambos"||p.momento===qa.momento)s+=2;return {p:p,s:s}}).sort(function(a,b){return b.s-a.s}).slice(0,3);
+  $("quiz-body").innerHTML='<p class="qt">Tus fragancias ideales</p>'+(r.length?r.map(function(x){return '<a class="res" href="#p'+x.p.id+'" data-go="1"><b>'+esc(x.p.nombre)+'</b><small>'+esc(x.p.marca)+'</small></a>'}).join(""):'<p>No encontramos coincidencias. Mirá todo el catálogo.</p>')+'<button type="button" class="close" id="quiz-again">Volver a empezar</button>';
+}
+$("quiz-open").onclick=function(){qs=0;qa={};quiz();$("quiz").classList.add("on")};
+$("quiz-close").onclick=function(){$("quiz").classList.remove("on")};
+$("quiz").addEventListener("click",function(e){
+  if(e.target===$("quiz")){$("quiz").classList.remove("on");return}
+  var o=e.target.closest(".opt");if(o){qa[QZ[qs].k]=o.dataset.v;qs++;quiz();return}
+  if(e.target.closest("[data-go]")){F={g:"todos",q:"",m:""};$("q").value="";renderFiltros();render();$("quiz").classList.remove("on");return}
+  if(e.target.id==="quiz-again"){qs=0;qa={};quiz()}
+});
+function totals(){
+  var n=0,t=0,sp=false;
+  for(var id in cart){var p=find(+id);n+=cart[id];if(pr(p))t+=cart[id]*pr(p);else sp=true}
+  return {n:n,t:t,sp:sp};
+}
+function update(){
+  var s=totals();
+  $("bar").classList.toggle("on", s.n>0);
+  document.body.classList.toggle("con-bar", s.n>0);
+  $("count").textContent = "Ver pedido (" + s.n + ")";
+  $("sub").textContent = s.t ? money(s.t) + (s.sp ? " + a confirmar" : "") : "";
+  var ids = Object.keys(cart);
+  $("items").innerHTML = ids.length ? ids.map(function(id){
+    var p=find(+id);
+    return '<div class="row"><div class="n">'+p.nombre+'<small>'+p.ml+' ml · '+(pr(p)?money(pr(p)):'precio a confirmar')+'</small></div>'+
+    '<div class="qty"><button type="button" data-d="-1" data-id="'+id+'" aria-label="Quitar uno">−</button><span>'+cart[id]+'</span>'+
+    '<button type="button" data-d="1" data-id="'+id+'" aria-label="Agregar uno">+</button></div></div>';
+  }).join("") : '<p class="empty">Todavía no agregaste perfumes.</p>';
+  $("total").textContent = s.t ? money(s.t) + (s.sp ? " + a confirmar" : "") + (usaTarjeta() && !s.sp ? " · 3 cuotas sin interés de " + money(Math.round(s.t/3)) : "") : "A confirmar";
+  $("send").textContent = WA ? "Enviar pedido por WhatsApp" : "Pedidos disponibles muy pronto";
+  $("send").disabled = !s.n || !WA;
+  if(!s.n) $("sheet").classList.remove("on");
+}
+$("grid").addEventListener("click", function(e){
+  var b=e.target.closest(".add"); if(!b||b.disabled) return;
+  var id=b.dataset.id; cart[id]=(cart[id]||0)+1; update();
+});
+$("items").addEventListener("click", function(e){
+  var b=e.target.closest("button[data-d]"); if(!b) return;
+  var id=b.dataset.id; cart[id]=(cart[id]||0)+(+b.dataset.d);
+  if(cart[id]<=0) delete cart[id]; update();
+});
+$("open").onclick=function(){$("sheet").classList.add("on")};
+$("close").onclick=function(){$("sheet").classList.remove("on")};
+$("sheet").addEventListener("click", function(e){if(e.target===$("sheet")) $("sheet").classList.remove("on")});
+$("send").onclick=function(){
+  var s=totals(); if(!s.n||!WA) return;
+  var lines = Object.keys(cart).map(function(id){
+    var p=find(+id);
+    return "• "+cart[id]+" x "+p.nombre+" ("+p.ml+" ml)"+(pr(p)?" - "+money(cart[id]*pr(p)):"");
+  });
+  var nombre=$("nombre").value.trim(), nota=$("nota").value.trim(), pago=$("pago").value;
+  var msg = "Hola! Quiero hacer un pedido en "+TIENDA+":\n\n"+lines.join("\n")+
+    (s.t?"\n\nTotal: "+money(s.t)+(s.sp?" + a confirmar":""):"")+
+    (pago?"\nMedio de pago: "+pago:"")+(nombre?"\nNombre: "+nombre:"")+(nota?"\nComentarios: "+nota:"");
+  window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(msg), "_blank");
+};
+function renderDest(){
+  var d = PRODUCTOS.filter(function(p){return p.destacado});
+  $("destacados").hidden = !d.length;
+  $("rail").innerHTML = d.map(function(p){
+    return '<a href="#p'+p.id+'"><img src="fotos/'+p.id+'.jpg" alt="'+p.nombre+'" onerror="this.remove()"><span>'+p.nombre+'</span></a>';
+  }).join("");
+}
+function renderInfo(){
+  $("nosotros").hidden = !D.nosotros;
+  $("t-nosotros").textContent = D.nosotros || "";
+  var e = D.envios || [];
+  $("envios").hidden = !e.length;
+  $("t-envios").innerHTML = e.map(function(x){return "<li></li>"}).join("");
+  Array.prototype.forEach.call($("t-envios").children, function(li,i){li.textContent = e[i]});
+  var ig = (D.instagram||"").replace(/\/+$/,"").split("/").pop().replace(/^@/,"").replace(/\?.*$/,"");
+  var h = "";
+  if(WA) h += '<a class="cta" href="https://wa.me/'+WA+'" target="_blank" rel="noopener">Escribinos por WhatsApp</a>';
+  if(ig) h += '<a class="cta alt" href="https://instagram.com/'+encodeURIComponent(ig)+'" target="_blank" rel="noopener">Instagram @'+ig.replace(/[<>&"]/g,"")+'</a>';
+  $("t-contacto").innerHTML = h || "<p>Muy pronto vas a poder escribirnos desde acá.</p>";
+  var fr = "";
+  if(WA) fr += '<a href="https://wa.me/'+WA+'" target="_blank" rel="noopener">WhatsApp</a>';
+  if(ig) fr += '<a href="https://instagram.com/'+encodeURIComponent(ig)+'" target="_blank" rel="noopener">Instagram</a>';
+  $("f-redes").innerHTML = fr;
+  $("f-year").textContent = new Date().getFullYear();
+  var rv = D.resenas || [];
+  $("resenas").hidden = !rv.length;
+  $("t-res").innerHTML = rv.map(function(r){return '<blockquote class="rev" style="margin-left:0"><p>'+esc(r.texto)+'</p><cite>'+esc(r.nombre)+'</cite></blockquote>'}).join("");
+  var pg = D.pagos || [];
+  $("pago-wrap").hidden = !pg.length;
+  $("pago").innerHTML = pg.map(function(x){return '<option>'+esc(x)+'</option>'}).join("");
+  var info = function(){$("pago-info").textContent = D.pagoInfo || ""};
+  info();
+  if(WA){$("fab").hidden=false;$("fab").href="https://wa.me/"+WA+"?text="+encodeURIComponent("Hola! Quiero consultar por una fragancia.")}
+  if(D.analytics && /^G-[A-Z0-9]+$/.test(D.analytics)){
+    var g=document.createElement("script");g.async=true;g.src="https://www.googletagmanager.com/gtag/js?id="+D.analytics;document.head.appendChild(g);
+    window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag("js",new Date());gtag("config",D.analytics);
+  }
+}
+$("pago").addEventListener("change",update);
+renderFiltros(); render(); renderDest(); renderInfo(); update();
+</script>
+</body>
+</html>
