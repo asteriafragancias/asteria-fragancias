@@ -62,7 +62,7 @@ ol{color:var(--muted);font-size:.92rem;padding-left:20px}
   <h2>Productos</h2>
   <div id="lista"></div>
   <button class="sec" id="nuevo" type="button">+ Agregar producto</button>
-  <p class="nota">La foto de cada producto va en la carpeta fotos con su número, por ejemplo fotos/10.jpg.</p>
+  <p class="nota">La foto de cada producto se sube junto a los demás archivos, con el nombre foto-NÚMERO.jpg. Por ejemplo, foto-10.jpg.</p>
 
   <button id="bajar" type="button" style="margin-top:16px">Descargar datos.js</button>
   <div class="box" style="margin-top:16px"><ol>
@@ -105,7 +105,7 @@ function campo(p,i,c){
 }
 function lista(){
   $("lista").innerHTML = D.productos.map(function(p,i){
-    return '<details class="box"><summary>'+esc(p.nombre)+'<small>foto: fotos/'+p.id+'.jpg</small></summary>'+
+    return '<details class="box"><summary>'+esc(p.nombre)+'<small>foto: foto-'+p.id+'.jpg</small></summary>'+
       '<div class="g2">'+CAMPOS.filter(function(c){return c[2]!=="ta"}).map(function(c){return '<div>'+campo(p,i,c)+'</div>'}).join("")+'</div>'+
       CAMPOS.filter(function(c){return c[2]==="ta"}).map(function(c){return campo(p,i,c)}).join("")+
       '<label class="chk"><input type="checkbox" data-i="'+i+'" data-k="agotado"'+(p.agotado?" checked":"")+'> Agotado</label>'+

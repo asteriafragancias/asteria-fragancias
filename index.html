@@ -28,7 +28,7 @@ main{max-width:960px;margin:0 auto;padding:0 20px 120px}
 .bottle:before{content:"";position:absolute;left:50%;top:-24px;width:30px;height:24px;margin-left:-15px;border-radius:4px 4px 0 0;background:var(--accent)}
 .bottle:after{content:"";position:absolute;left:10px;top:16px;width:8px;height:60px;border-radius:6px;background:rgba(255,255,255,.4)}
 .info{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
-.info h3{font-size:1.3rem}
+.info h3{font:600 1.05rem/1.3 Montserrat,sans-serif;letter-spacing:.02em}
 .notes{color:var(--muted);font-size:.92rem;margin:0}
 .meta{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:12px}
 .price{font-weight:700;font-size:1.1rem}
@@ -62,7 +62,7 @@ header .lema{font:400 clamp(2.2rem,8vw,3.4rem)/1.1 Allura,"Playfair Display",cur
 .rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
 .rail a{flex:0 0 210px;scroll-snap-align:start;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:4px;overflow:hidden}
 .rail img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
-.rail span{display:block;padding:10px 12px;font:500 1.05rem "Playfair Display",Georgia,serif}
+.rail span{display:block;padding:10px 12px;font:500 .95rem/1.3 Montserrat,sans-serif;letter-spacing:.02em}
 .card{scroll-margin-top:16px}
 .info p,.info li{color:var(--muted);max-width:60ch;margin:0 0 6px}
 .info ul{padding-left:20px;margin:0}
@@ -174,7 +174,7 @@ function visibles(){return PRODUCTOS.filter(function(p){
 function render(){
   var v=visibles(); $("vacio").hidden=v.length>0;
   $("grid").innerHTML = v.map(function(p){
-    var foto = p.foto || ("fotos/" + p.id + ".jpg");
+    var foto = p.foto || ("foto-" + p.id + ".jpg");
     var btn = p.agotado ? '<button class="add" type="button" disabled>Agotado</button>' : '<button class="add" type="button" data-id="'+p.id+'">Agregar</button>';
     var det = (p.salida||p.perfil||p.familia) ? '<details class="det"><summary>Ver notas</summary>'+L("Familia",p.familia)+L("Salida",p.salida)+L("Corazón",p.corazon)+L("Fondo",p.fondo)+(p.perfil?'<p>'+esc(p.perfil)+'</p>':"")+'</details>' : "";
     var etq = ETQ[p.etiqueta] ? '<span class="etq">'+ETQ[p.etiqueta]+'</span>' : "";
@@ -260,7 +260,7 @@ function renderDest(){
   var d = PRODUCTOS.filter(function(p){return p.destacado});
   $("destacados").hidden = !d.length;
   $("rail").innerHTML = d.map(function(p){
-    return '<a href="#p'+p.id+'"><img src="fotos/'+p.id+'.jpg" alt="'+p.nombre+'" onerror="this.remove()"><span>'+p.nombre+'</span></a>';
+    return '<a href="#p'+p.id+'"><img src="foto-'+p.id+'.jpg" alt="'+p.nombre+'" onerror="this.remove()"><span>'+p.nombre+'</span></a>';
   }).join("");
 }
 function renderInfo(){
