@@ -266,8 +266,8 @@ window.TIENDA = {
  "legal": {
   "razon": "",
   "cuit": "",
-  "domicilio": "",
   "email": "",
+  "domicilio": "",
   "politica": ""
  },
  "url": "https://luceromelina35-sys.github.io/asteria-fragancias/",
@@ -308,5 +308,5 @@ window.TIENDA = {
   }
  ],
  "galeria": [],
- "pedidosUrl": ""
+ "pedidosUrl": "https://script.google.com/macros/s/AKfycbz2ixqJMehW9pv2De88uJSf2dMmbZ4yELTQ7EhlmKCG09hpKXsBS15saHu-qoNnJ2Dr/exec"
 };
