@@ -29,7 +29,7 @@ window.TIENDA = {
     "Primavera",
     "Verano"
    ],
-   "stock": null
+   "stock": 1
   },
   {
    "id": 2,
@@ -56,7 +56,7 @@ window.TIENDA = {
     "Aire libre",
     "Uso diario"
    ],
-   "stock": null
+   "stock": 1
   },
   {
    "id": 3,
@@ -83,7 +83,7 @@ window.TIENDA = {
     "Actividades diarias",
     "Ocasiones informales"
    ],
-   "stock": null
+   "stock": 1
   },
   {
    "id": 4,
@@ -110,7 +110,7 @@ window.TIENDA = {
     "Verano",
     "Salidas"
    ],
-   "stock": null
+   "stock": 1
   },
   {
    "id": 5,
@@ -137,7 +137,7 @@ window.TIENDA = {
     "Verano",
     "Ocasiones especiales"
    ],
-   "stock": null
+   "stock": 1
   },
   {
    "id": 6,
@@ -164,7 +164,7 @@ window.TIENDA = {
     "Verano",
     "Uso diario"
    ],
-   "stock": null
+   "stock": 1
   },
   {
    "id": 7,
@@ -192,7 +192,7 @@ window.TIENDA = {
     "Primavera",
     "Otoño"
    ],
-   "stock": null
+   "stock": 1
   },
   {
    "id": 8,
@@ -218,7 +218,7 @@ window.TIENDA = {
     "Uso diario",
     "Todas las estaciones"
    ],
-   "stock": null
+   "stock": 1
   },
   {
    "id": 9,
@@ -245,7 +245,7 @@ window.TIENDA = {
     "Verano",
     "Uso diario"
    ],
-   "stock": null
+   "stock": 2
   }
  ],
  "instagram": "asteria.fragancias",
