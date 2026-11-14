@@ -281,7 +281,52 @@ window.TIENDA = {
   "activo": true,
   "texto": "Envío a domicilio por Uber Moto. El costo y el horario se coordinan por WhatsApp."
  },
- "faq": [],
+ "faq": [
+  {
+   "p": "¿Los perfumes son originales?",
+   "r": "Sí. Todos nuestros perfumes son 100% originales."
+  },
+  {
+   "p": "¿Cómo puedo comprar?",
+   "r": "Elegí tus fragancias favoritas, agregalas al carrito y completá tus datos. Al finalizar, recibirás un mensaje de WhatsApp con el detalle de tu pedido para coordinar la compra."
+  },
+  {
+   "p": "¿Dónde puedo retirar mi pedido?",
+   "r": "Podés elegir uno de nuestros tres puntos de encuentro:"
+  },
+  {
+   "p": "¿Realizan envíos a domicilio?",
+   "r": "Sí. Realizamos envíos mediante Uber Moto, coordinados previamente por WhatsApp."
+  },
+  {
+   "p": "¿Cuánto cuesta el envío?",
+   "r": "El costo depende de la ubicación de destino. Te informamos el importe antes de confirmar el envío."
+  },
+  {
+   "p": "¿Cuánto demora la entrega?",
+   "r": "El horario y la disponibilidad se coordinan por WhatsApp, según el punto de retiro o la ubicación del envío."
+  },
+  {
+   "p": "¿Cómo sé si un perfume está disponible?",
+   "r": "La disponibilidad se muestra en nuestra tienda. Si un producto está agotado, podés solicitar que te avisemos cuando vuelva a estar disponible."
+  },
+  {
+   "p": "¿Cuándo queda confirmado mi pedido?",
+   "r": "Una vez que revisamos la disponibilidad, el medio de pago y la entrega, te confirmamos el pedido por WhatsApp."
+  },
+  {
+   "p": "¿Cómo puedo comunicarme con Asteria?",
+   "r": "Podés escribirnos directamente por WhatsApp para consultas, pedidos y coordinación de entregas."
+  },
+  {
+   "p": "¿Cómo puedo pagar?",
+   "r": "Con transferencia o efectivo, que tienen descuento, o con tarjeta en 3 cuotas sin interés."
+  },
+  {
+   "p": "¿Cómo cuido mi perfume?",
+   "r": "Guardalo en su caja, bien cerrado y lejos del sol, del calor y de la humedad. Evitá dejarlo en el auto o en el baño."
+  }
+ ],
  "galeria": [],
  "pedidosUrl": "https://script.google.com/macros/s/AKfycbz2ixqJMehW9pv2De88uJSf2dMmbZ4yELTQ7EhlmKCG09hpKXsBS15saHu-qoNnJ2Dr/exec"
 };
