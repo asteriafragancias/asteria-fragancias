@@ -218,7 +218,7 @@ window.TIENDA = {
     "Uso diario",
     "Todas las estaciones"
    ],
-   "stock": 1
+   "stock": 2
   },
   {
    "id": 9,
