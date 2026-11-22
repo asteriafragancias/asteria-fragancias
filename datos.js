@@ -245,7 +245,7 @@ window.TIENDA = {
     "Verano",
     "Uso diario"
    ],
-   "stock": 2
+   "stock": 1
   }
  ],
  "instagram": "asteria.fragancias",
@@ -328,5 +328,19 @@ window.TIENDA = {
   }
  ],
  "galeria": [],
- "pedidosUrl": "https://script.google.com/macros/s/AKfycbz2ixqJMehW9pv2De88uJSf2dMmbZ4yELTQ7EhlmKCG09hpKXsBS15saHu-qoNnJ2Dr/exec"
+ "pedidosUrl": "https://script.google.com/macros/s/AKfycbz2ixqJMehW9pv2De88uJSf2dMmbZ4yELTQ7EhlmKCG09hpKXsBS15saHu-qoNnJ2Dr/exec",
+ "pedidosProcesados": [
+  "cf563d25838ac977976525a278d78e8f4866df7dba95b50cc12c94b284b24caf"
+ ],
+ "movimientosStock": [
+  {
+   "hash": "cf563d25838ac977976525a278d78e8f4866df7dba95b50cc12c94b284b24caf",
+   "fecha": "2026-11-22T00:29:39.239Z",
+   "productoId": 9,
+   "nombre": "Yara Tous",
+   "cantidad": 1,
+   "stockAnterior": 2,
+   "stockNuevo": 1
+  }
+ ]
 };
