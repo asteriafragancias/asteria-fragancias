@@ -177,7 +177,7 @@ window.TIENDA = {
    "momento": "ambos",
    "etiqueta": "",
    "precio": 102600,
-   "agotado": false,
+   "agotado": true,
    "destacado": false,
    "familia": "Floral frutal amaderada",
    "salida": "Naranja, bergamota, pomelo y durazno",
@@ -192,7 +192,7 @@ window.TIENDA = {
     "Primavera",
     "Otoño"
    ],
-   "stock": 1
+   "stock": 0
   },
   {
    "id": 8,
@@ -330,7 +330,8 @@ window.TIENDA = {
  "galeria": [],
  "pedidosUrl": "https://script.google.com/macros/s/AKfycbz2ixqJMehW9pv2De88uJSf2dMmbZ4yELTQ7EhlmKCG09hpKXsBS15saHu-qoNnJ2Dr/exec",
  "pedidosProcesados": [
-  "cf563d25838ac977976525a278d78e8f4866df7dba95b50cc12c94b284b24caf"
+  "cf563d25838ac977976525a278d78e8f4866df7dba95b50cc12c94b284b24caf",
+  "6ed3377818c1d3f3153d73c724cad10c87f6cd9588b27cffc3d36c7a690debf7"
  ],
  "movimientosStock": [
   {
@@ -341,6 +342,15 @@ window.TIENDA = {
    "cantidad": 1,
    "stockAnterior": 2,
    "stockNuevo": 1
+  },
+  {
+   "hash": "6ed3377818c1d3f3153d73c724cad10c87f6cd9588b27cffc3d36c7a690debf7",
+   "fecha": "2026-11-27T15:03:51.842Z",
+   "productoId": 7,
+   "nombre": "Club de Nuit Woman",
+   "cantidad": 1,
+   "stockAnterior": 1,
+   "stockNuevo": 0
   }
  ]
 };
